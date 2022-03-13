@@ -1,0 +1,34 @@
+{
+  "profiles": {
+    "Docker Compose": {
+      "commandName": "DockerCompose",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "randomreviewsite",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "randomreviewgenerator": "StartDebugging",
+        "randomreviewsite": "StartDebugging"
+      }
+    },
+    "Front end only": {
+      "commandName": "DockerCompose",
+      "composeLaunchAction": "LaunchBrowser",
+      "composeLaunchServiceName": "randomreviewsite",
+      "composeLaunchUrl": "{Scheme}://localhost:{ServicePort}",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "randomreviewgenerator": "StartWithoutDebugging",
+        "randomreviewsite": "StartDebugging"
+      }
+    },
+    "No debug": {
+      "commandName": "DockerCompose",
+      "commandVersion": "1.0",
+      "serviceActions": {
+        "randomreviewgenerator": "StartWithoutDebugging",
+        "randomreviewsite": "StartWithoutDebugging"
+      }
+    }
+  }
+}

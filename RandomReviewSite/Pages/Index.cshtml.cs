@@ -19,7 +19,8 @@ namespace RandomReviewSite.Pages
         public async Task<IActionResult> OnPostGenerateReview()
         {
             var httpClient = _httpClientFactory.CreateClient();
-            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, "https://localhost:44318/api/generate");
+            string url = "https://localhost:44318/api/generate";
+            var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, url);
 
             var httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
 
@@ -30,7 +31,6 @@ namespace RandomReviewSite.Pages
 
                 Review = await JsonSerializer.DeserializeAsync<Review>(contentStream);
             }
-
             return Page();
         }
     }

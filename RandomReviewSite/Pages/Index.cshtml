@@ -4,31 +4,33 @@
     ViewData["Title"] = "Home page";
 }
 
-<div class="text-center">
-    <form method="post">
-        <input class="btn btn-primary" value="Generate Review" type="submit" asp-page-handler="GenerateReview"/>
-    </form>
-</div>
+<div class="container-fluid">
+    <div class="text-center">
+        <form method="post">
+            <input class="btn btn-primary" value="Generate Review" type="submit" asp-page-handler="GenerateReview" />
+        </form>
+    </div>
 
-@if (Model.Review != null)
-{
-    <div class="card">
-    <div class="card-body">
-        <h5 class="card-title">@Model.Review.summary</h5>
-        <h6 class="card-subtitle mb-2 text-muted">@Model.Review.username</h6>
-        <p>
-            @for (int i = 0; i < @Model.Review.stars; i++)
-            { 
-                <i class="bi bi-star-fill"></i>
-            }
-            @for (int i = @Model.Review.stars; i < 5; i++ )
-            { 
-                 <i class="bi bi-star"></i>
-            }
-            </p>
-            @Model.Review.stars stars
-        <p class="card-text">@Model.Review.text</p>
-        <h6 class="card-subtitle mb-2 text-muted">@Model.Review.helpful[0] of @Model.Review.helpful[1] found helpful</h6>
-    </div>
-    </div>
-}
+    @if (Model.Review != null)
+    {
+        <div class="card mt-2 col-md-12" style="background:#EFEEEE" >
+            <div class="card-body">
+                <h5 class="card-title">@Model.Review.summary</h5>
+                <h6 class="card-subtitle mb-2 text-muted">@Model.Review.username</h6>
+                <p>
+                    @for (int i = 0; i < @Model.Review.stars; i++)
+                    {
+                        <i class="bi bi-star-fill"></i>
+                    }
+                    @for (int i = @Model.Review.stars; i < 5; i++)
+                    {
+                        <i class="bi bi-star"></i>
+                    }
+                </p>
+                @Model.Review.stars stars
+                <p class="card-text">@Model.Review.text</p>
+                <h6 class="card-subtitle mb-2 text-muted">@Model.Review.helpful[0] of @Model.Review.helpful[1] found helpful</h6>
+            </div>
+        </div>
+    }
+</div>
