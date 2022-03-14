@@ -14,6 +14,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+// Does this need to be removed for Docker?
 //app.UseHttpsRedirection();
 
 app.UseStaticFiles();

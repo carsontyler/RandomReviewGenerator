@@ -6,7 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>bdfd55ab-b5c7-42bb-9fd7-0d09be894de3</UserSecretsId>
   </PropertyGroup>
-
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Markov" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="6.0.3" />
@@ -15,10 +20,6 @@
     <PackageReference Include="SentimentAnalyzer" Version="1.2.3" />
     <PackageReference Include="StackExchange.Redis" Version="2.5.43" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Datasets\" />
   </ItemGroup>
 
 </Project>

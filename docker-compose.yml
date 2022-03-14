@@ -1,0 +1,19 @@
+version: '3.4'
+
+services:
+  randomreviewgenerator:
+    image: ${DOCKER_REGISTRY-}randomreviewgenerator
+    container_name: RandomReviewGenerator
+    build:
+      context: .
+      dockerfile: RandomReviewGenerator/Dockerfile
+    ports:
+      - 80:80
+      - 443:443
+
+  randomreviewsite:
+    image: ${DOCKER_REGISTRY-}randomreviewsite
+    build:
+      context: .
+      dockerfile: RandomReviewSite/Dockerfile
+
