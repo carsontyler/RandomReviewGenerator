@@ -3,6 +3,8 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+RandomReviewGenerator/RandomReviewGenerator/Datasets/dataset.json
+
 # User-specific files
 *.rsuser
 *.suo
