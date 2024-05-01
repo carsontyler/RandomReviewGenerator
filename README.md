@@ -1,13 +1,13 @@
-# Loyal Health Technical Assessment Exercise
+# Technical Assessment Exercise
 ##### Carson Tyler
 
 ### Requirements
-- [.NET 6](https://dotnet.microsoft.com/en-us/download)
-- [Visual Studio 2022](https://docs.microsoft.com/en-us/visualstudio/releases/2022/compatibility#-visual-studio-2022-support-for-net-development)
+- [.NET 8](https://dotnet.microsoft.com/en-us/download)
+- Your favorite .NET 8 IDE
 
 ## Run the API
 
-- Clone the repo and open in VS 2022.
+- Clone the repo and open in your IDE.
 - Set the `RandomReviewGenerator` project as the startup project.
 - Start the project with IIS Express (F5).
 - This will launch the Swagger site for the API. The `/api/generate` endpoint can be can through this site if desired via "Try it out".
@@ -23,7 +23,7 @@
 - Both the Swagger site and website will run (`https://localhost:44385`). On the website, click the "Generate Review" button and a review will be generated. This can be run as many times as desired.
 
 ## Run unit tests
-- To unit tests in Visual Studio, open the Test Explorer window and select `Run All Tests in View`
+- To unit tests in your IDE, open the Test Explorer window and select `Run All Tests in View`
 
 ## Developer Notes
 - I attempted to implement Docker but ran into a significant issue sending requests between the containers. I wasn't able to resolve this in a reasonable about of time but I've left in the code from the latest attempt; however, the containers are not in a working state. 

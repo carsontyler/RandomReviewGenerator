@@ -1,6 +1,9 @@
+using Microsoft.Extensions.Options;
 using Moq;
 using Moq.Protected;
 using RandomReviewGenerator.Controllers;
+using RandomReviewGenerator.Services;
+using RandomReviewSite.Options;
 using RandomReviewSite.Pages;
 using SentimentAnalyzer.Models;
 using System.Collections.Generic;
@@ -21,7 +24,7 @@ namespace RandomReview.Tests
         {
             var cacheService = new TestCacheService();
 
-            var controller = new GenerateReviewController(cacheService);
+            var controller = new GenerateReviewService(cacheService);
 
             var result = controller.GenerateReview();
 
@@ -33,7 +36,7 @@ namespace RandomReview.Tests
         [MemberData(nameof(GetSentimentData))]
         public void GenerateReview_SentimentScoreCalculatesPositiveCorrectly(SentimentPrediction sentiment, int expectedScore)
         {
-            int resultScore = GenerateReviewController.CalculateScore(sentiment);
+            int resultScore = GenerateReviewService.CalculateScore(sentiment);
 
             Assert.Equal(expectedScore, resultScore);
         }
@@ -42,7 +45,8 @@ namespace RandomReview.Tests
         public async void TestHttpClient()
         {
             var mockFactory = MockHttpClientFactory();
-            var page = new IndexModel(mockFactory.Object);
+            var mockOptions = new Mock<IOptions<ApplicationOptions>>();
+            var page = new IndexModel(mockFactory.Object, mockOptions.Object);
 
             var result = await page.OnPostGenerateReview();
 

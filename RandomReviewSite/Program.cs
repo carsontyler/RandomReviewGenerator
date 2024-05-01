@@ -1,4 +1,9 @@
-var builder = WebApplication.CreateBuilder(args);
+using RandomReviewSite.Options;
+
+    var builder = WebApplication.CreateBuilder(args);
+
+// Add options
+var options = builder.Services.AddOptions<ApplicationOptions>().BindConfiguration(nameof(ApplicationOptions));
 
 // Add services to the container.
 builder.Services.AddRazorPages();

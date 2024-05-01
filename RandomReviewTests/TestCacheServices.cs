@@ -23,7 +23,7 @@ namespace RandomReview.Tests
 
         public bool TryGetValue(object key, out object value)
         {
-            if (key == "markovChain")
+            if (key is string v && (v == "markovChain"))
             {
                 value = GenerateMarkovChain();
                 return true;

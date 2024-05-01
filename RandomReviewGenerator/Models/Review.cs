@@ -3,10 +3,10 @@ namespace RandomReviewGenerator
     public class Review
     {
         public int stars { get; set; }
-        public string text { get; set; }
-        public string username { get; set; }
+        public string? text { get; set; }
+        public string? username { get; set; }
         public DateTime timestamp { get; set; }
-        public string summary { get; set; }
+        public string? summary { get; set; }
         public int[]? helpful { get; set; }
     }
 

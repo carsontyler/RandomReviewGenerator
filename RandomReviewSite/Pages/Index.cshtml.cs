@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.Extensions.Options;
 using RandomReviewGenerator;
+using RandomReviewSite.Options;
 using System.Text.Json;
 
 namespace RandomReviewSite.Pages
@@ -8,12 +10,14 @@ namespace RandomReviewSite.Pages
     public class IndexModel : PageModel
     {
         private readonly IHttpClientFactory _httpClientFactory;
+        private readonly ApplicationOptions _applicationOptions;
 
         public Review? Review { get; set; }
 
-        public IndexModel(IHttpClientFactory httpClientFactory)
+        public IndexModel(IHttpClientFactory httpClientFactory, IOptions<ApplicationOptions> applicationOptions)
         {
             _httpClientFactory = httpClientFactory;
+            _applicationOptions = applicationOptions.Value;
         }
 
         /// <summary>
@@ -24,8 +28,7 @@ namespace RandomReviewSite.Pages
         public async Task<IActionResult> OnPostGenerateReview()
         {
             var httpClient = _httpClientFactory.CreateClient();
-            string url = "https://localhost:44318/api/generate";
-            //string url = "https://RandomReviewGenerator/api/generate"; // Url for docker. Not working, unsure how to fix this
+            var url = _applicationOptions.ApiUrl + "api/generate";
             var httpRequestMessage = new HttpRequestMessage(HttpMethod.Get, url);
 
             var httpResponseMessage = await httpClient.SendAsync(httpRequestMessage);
